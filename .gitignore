@@ -1,0 +1,6 @@
+# Editor / atomic-write temp files
+*.tmp.*
+
+# OS cruft
+.DS_Store
+Thumbs.db
