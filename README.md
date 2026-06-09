@@ -12,6 +12,10 @@ University web server.
 > site lists only mentors who have confirmed in writing, and the application
 > route is still a `mailto:` (see below). New mentors and placement partners
 > are added as they confirm.
+>
+> Redesigned June 2026 after external UX review: students-first hero with
+> Apply / Fund a bursary calls to action, the Treasury endorsement in a band
+> below the hero, and the 2-vs-47 statistic demoted to the Vision section.
 
 ## Files
 
@@ -19,15 +23,18 @@ University web server.
 Website/
 ├── index.html              the whole page
 ├── donor-factsheet.html    one-page donor factsheet
+├── donor-factsheet.pdf     PDF of the factsheet, linked from the Donors section
+│                           (regenerate whenever donor-factsheet.html changes)
 ├── mentor-factsheet.html   one-page mentor factsheet
 ├── CNAME                   custom domain (econpipeline.org)
 ├── .nojekyll               tells GitHub Pages to serve files as-is
 ├── .gitignore              keeps editor temp files (*.tmp.*) out of the repo
 ├── README.md               this file
+├── CLAUDE.md               working conventions and guardrails for the repo
 └── assets/
     ├── css/styles.css      the main design system
     ├── css/factsheet.css   styles for the two factsheets
-    ├── js/main.js          scroll reveals, nav, count-ups, roadmap
+    ├── js/main.js          scroll reveals, nav, roadmap, apply-button gate
     ├── fonts/              self-hosted Raleway (TTF)
     └── img/                SU logo (white SVG), keynote + mentor headshots
 ```
@@ -50,7 +57,9 @@ banners (`<!-- HERO -->`, `<!-- STUDENTS -->`, etc.). Edit the text, save,
 refresh. Colours, type, and spacing are controlled by the tokens at the top of
 `assets/css/styles.css` (the `:root { ... }` block).
 
-To publish a change, commit and push from inside the `Website/` folder:
+To publish a trivial copy fix, commit and push from inside the `Website/`
+folder (anything structural goes via a short-lived branch and pull request –
+see `CLAUDE.md`):
 
 ```bash
 git add -A
@@ -58,17 +67,25 @@ git commit -m "Describe the change"
 git push
 ```
 
-GitHub Pages rebuilds within a minute or so.
+GitHub Pages rebuilds within a minute or so. If you edit a factsheet's HTML,
+regenerate its PDF so the download link matches, e.g. with headless Edge:
+
+```
+msedge --headless --no-pdf-header-footer --print-to-pdf="donor-factsheet.pdf" "donor-factsheet.html"
+```
 
 ## Items still to finalise
 
-- **Donor giving details** – the Donors section currently directs interest to
-  Prof. Fourie. Swap in EFT, online-portal and Section 18A details once
-  arrangements with the SU Development & Alumni Relations office are
-  finalised.
-- **Application route** – the "Register your interest" button is a `mailto:`
-  to `info@econpipeline.org` with a structured body; swap in the application
-  portal/form when it exists.
+- **Donor giving details** – the Donors section invites donors to write to
+  `info@econpipeline.org`, including for Section 18A details. Swap in EFT,
+  online-portal and Section 18A specifics once arrangements with the SU
+  Development & Alumni Relations office are finalised.
+- **Application route** – the "Apply now" button is a `mailto:` to
+  `apply@econpipeline.org` with a structured body, gated by JavaScript until
+  applications open on 15 June 2026; swap in the application portal/form when
+  it exists. **Confirm the `apply@` forward works** (send a test email with an
+  attachment from an external account) before applications open – only the
+  `info@` forward is confirmed live.
 - **Mentor names** – each new external mentor is added only after they
   confirm in writing.
 
