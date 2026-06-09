@@ -225,6 +225,41 @@ section{ position:relative; }
 .stage p{ font-weight:300; font-size:.95rem; color:rgba(255,255,255,.7); line-height:1.55; }
 
 /* =============================================================================
+   ENDORSEMENT
+   ========================================================================== */
+.endorse{
+  margin-top:clamp(2rem,4vw,3rem); display:grid;
+  grid-template-columns:1.1fr 1fr; gap:clamp(2rem,5vw,4rem); align-items:start;
+}
+.endorse__prose p{ color:var(--grey); font-weight:300; font-size:clamp(1.02rem,1.5vw,1.18rem); line-height:1.65; }
+.endorse__prose p + p{ margin-top:1.1rem; }
+
+.endorse__quote{
+  background:#fff; border:1px solid var(--line); border-radius:2px;
+  border-left:3px solid var(--gold); padding:clamp(1.8rem,3vw,2.4rem);
+}
+.endorse__quote blockquote p{
+  color:var(--maroon); font-weight:300; font-style:italic;
+  font-size:clamp(1.05rem,1.6vw,1.28rem); line-height:1.5;
+}
+.endorse__quote blockquote p + p{ margin-top:1rem; }
+
+.endorse__by{
+  margin-top:1.6rem; padding-top:1.4rem; border-top:1px solid var(--line);
+  display:flex; align-items:center; gap:1rem;
+}
+.endorse__by img{
+  width:96px; height:96px; border-radius:50%; object-fit:cover; object-position:center top;
+  filter:grayscale(1); transition:filter .5s var(--ease); box-shadow:0 0 0 1px var(--line); flex:0 0 auto;
+}
+.endorse__by:hover img{ filter:grayscale(0); }
+.endorse__id{ display:flex; flex-direction:column; }
+.endorse__name{ font-weight:700; font-size:.98rem; color:var(--black); }
+.endorse__role{ font-size:.82rem; color:var(--grey-soft); margin-top:.2rem; }
+
+@media (max-width:900px){ .endorse{ grid-template-columns:1fr; } }
+
+/* =============================================================================
    STUDENTS
    ========================================================================== */
 .grid{ display:grid; gap:clamp(1.4rem,2.4vw,2.2rem); }
