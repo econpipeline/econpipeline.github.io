@@ -165,7 +165,7 @@ section{ position:relative; }
    HERO
    ========================================================================== */
 .hero{
-  min-height:100svh; position:relative; display:flex; flex-direction:column;
+  min-height:86svh; position:relative; display:flex; flex-direction:column;
   justify-content:center; overflow:hidden;
   background:
     radial-gradient(130% 100% at 80% -10%, var(--maroon) 0%, var(--ink-2) 45%, var(--ink) 100%);
@@ -176,27 +176,23 @@ section{ position:relative; }
 .hero__lines path{ fill:none; stroke:var(--gold); stroke-width:1; opacity:.14; }
 
 .hero__inner{ position:relative; z-index:2; max-width:var(--wrap); width:100%; margin-inline:auto; }
-.hero__figure{ margin:.6rem 0 1.4rem; }
+/* .hero__num retained for the factsheets */
 .hero__num{
   display:inline-block;
   font-weight:100; font-size:clamp(8rem, 27vw, 21rem); line-height:.86;
   letter-spacing:-.04em; color:#fff;
 }
-.hero__lead{
-  font-weight:200; font-size:clamp(1.5rem, 3.5vw, 2.7rem); line-height:1.22;
-  max-width:20ch; color:#fff;
+.hero__title{
+  margin-top:1.4rem; font-weight:200; font-size:clamp(2.3rem, 5.6vw, 4.2rem);
+  line-height:1.07; letter-spacing:-.015em; color:#fff; max-width:20ch;
 }
-.hero__lead .num{ color:var(--gold); font-weight:300; }
-.hero__claim{
-  margin-top:1.8rem; font-weight:400; font-size:clamp(1rem,1.5vw,1.18rem);
-  color:var(--gold-soft); letter-spacing:.01em; max-width:40ch;
+.hero__sub{
+  margin-top:1.6rem; font-weight:300; font-size:clamp(1.05rem, 1.7vw, 1.3rem);
+  line-height:1.55; color:rgba(255,255,255,.82); max-width:52ch;
 }
-.hero__source{
-  margin-top:1.4rem; font-weight:300; font-size:.82rem; line-height:1.5;
-  color:rgba(255,255,255,.5); max-width:54ch; letter-spacing:.005em;
-}
-.hero__source a{ color:rgba(255,255,255,.7); border-bottom:1px solid rgba(202,162,88,.5); padding-bottom:1px; transition:.3s var(--ease); }
-.hero__source a:hover{ color:var(--gold); border-bottom-color:var(--gold); }
+.hero__cta{ margin-top:2.4rem; display:flex; gap:1rem; flex-wrap:wrap; }
+.btn--ghost{ background:transparent; color:#fff; border-color:rgba(255,255,255,.45); }
+.btn--ghost:hover{ border-color:var(--gold); color:var(--gold); transform:translateY(-2px); }
 
 .hero__scroll{
   position:absolute; left:50%; bottom:2.2rem; transform:translateX(-50%); z-index:3;
@@ -225,43 +221,25 @@ section{ position:relative; }
 .stage p{ font-weight:300; font-size:.95rem; color:rgba(255,255,255,.7); line-height:1.55; }
 
 /* =============================================================================
-   ENDORSEMENT
+   ENDORSEMENT BAND (attached below the hero)
    ========================================================================== */
-.endorsement .section-head{ max-width:82ch; margin-inline:auto; text-align:center; }
-.endorsement .section-head .lede{ max-width:78ch; margin-inline:auto; }
-
-.endorse{
-  margin:clamp(2.4rem,5vw,3.6rem) auto 0; max-width:640px;
-  display:flex; flex-direction:column; align-items:center; text-align:center;
+.endorse-band{
+  background:var(--ink); color:#fff;
+  border-top:1px solid rgba(202,162,88,.25);
+  padding-block:clamp(2rem,4vw,3rem);
 }
-
-.endorse__bubble{
-  position:relative; width:100%; background:#fff;
-  border:1px solid var(--line); border-radius:18px;
-  padding:clamp(2.6rem,4vw,3.2rem) clamp(1.8rem,3.4vw,2.6rem) clamp(1.9rem,3vw,2.3rem);
+.endorse-band__inner{ display:flex; align-items:center; gap:clamp(1.4rem,3vw,2.4rem); }
+.endorse-band__photo{
+  width:84px; height:84px; border-radius:50%; object-fit:cover; object-position:center top;
+  flex-shrink:0; filter:grayscale(1); transition:filter .5s var(--ease);
+  box-shadow:0 0 0 1px rgba(202,162,88,.4);
 }
-.endorse__bubble::before{
-  content:"\201C"; position:absolute; top:.4rem; left:1.4rem;
-  font-size:3.4rem; line-height:1; color:var(--gold); font-weight:700;
+.endorse-band:hover .endorse-band__photo{ filter:grayscale(0); }
+.endorse-band__quote p{
+  font-weight:300; font-style:italic; font-size:clamp(1rem,1.5vw,1.25rem);
+  line-height:1.55; color:rgba(255,255,255,.92); max-width:72ch;
 }
-.endorse__bubble::after{
-  content:""; position:absolute; left:50%; bottom:-9px;
-  width:18px; height:18px; background:#fff; transform:translateX(-50%) rotate(45deg);
-  border-right:1px solid var(--line); border-bottom:1px solid var(--line);
-}
-.endorse__bubble p{
-  font-weight:300; font-style:italic; color:var(--maroon);
-  font-size:clamp(1.12rem,1.9vw,1.5rem); line-height:1.5;
-}
-
-.endorse__by{ margin-top:1.9rem; display:flex; flex-direction:column; align-items:center; }
-.endorse__by img{
-  width:96px; height:96px; border-radius:50%; object-fit:cover; object-position:center top;
-  filter:grayscale(1); transition:filter .5s var(--ease); box-shadow:0 0 0 1px var(--line); margin-bottom:.9rem;
-}
-.endorse:hover .endorse__by img{ filter:grayscale(0); }
-.endorse__name{ font-weight:700; font-size:1rem; color:var(--black); }
-.endorse__role{ font-size:.82rem; color:var(--grey-soft); margin-top:.2rem; }
+.endorse-band__by{ margin-top:.7rem; font-size:.84rem; letter-spacing:.02em; color:var(--gold-soft); }
 
 /* =============================================================================
    STUDENTS
@@ -462,6 +440,8 @@ section{ position:relative; }
 .give__how{ margin-top:clamp(2.5rem,5vw,3.5rem); max-width:62ch; }
 .give__how-label{ font-size:.72rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem; }
 .give__how-body{ font-weight:300; color:rgba(255,255,255,.8); }
+.give__how-body a{ color:var(--gold); border-bottom:1px solid rgba(202,162,88,.4); padding-bottom:1px; }
+.give__how-body a:hover{ color:var(--gold-soft); border-bottom-color:var(--gold-soft); }
 .give__how .placeholder{ color:var(--gold-soft); font-style:italic; }
 .give__how .btn{ margin-top:1.8rem; }
 .give__how-link{ margin-top:1.2rem; font-weight:300; font-size:.92rem; color:rgba(255,255,255,.65); }
@@ -525,6 +505,7 @@ section{ position:relative; }
   .footer__inner{ flex-direction:column; }
   .keynotes__list{ gap:.5rem; }
   .keynotes__list img{ width:80px; height:80px; }
+  .endorse-band__inner{ flex-direction:column; text-align:center; }
 }
 
 /* =============================================================================
