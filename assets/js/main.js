@@ -104,4 +104,16 @@
     b.addEventListener("click", function () { selectMilestone(b.getAttribute("data-i")); });
   });
   if (rmButtons.length) selectMilestone(0);
+
+  /* ---------- Apply button: opens 15 June 2026 ---------- */
+  var applyBtn = document.getElementById("applyBtn");
+  if (applyBtn && !showAll) {
+    var opensAt = new Date(2026, 5, 15); // 15 June 2026 (month is 0-indexed)
+    if (new Date() < opensAt) {
+      applyBtn.classList.add("btn--disabled");
+      applyBtn.setAttribute("aria-disabled", "true");
+      applyBtn.removeAttribute("href");
+      applyBtn.textContent = "Applications open 15 June 2026";
+    }
+  }
 })();

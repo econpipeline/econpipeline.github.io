@@ -291,6 +291,8 @@ section{ position:relative; }
 }
 .ticks strong{ color:var(--black); font-weight:700; }
 .card p + .ticks{ margin-top:1.2rem; }
+.card__note{ margin-top:1.2rem; font-size:.9rem; line-height:1.55; color:var(--grey); }
+.card__note strong{ color:var(--maroon); font-weight:700; }
 
 /* Application timeline */
 .apptimeline{ margin-top:clamp(3rem,6vw,5rem); border-top:1px solid var(--line); padding-top:2.6rem; }
@@ -320,7 +322,8 @@ section{ position:relative; }
 .btn--solid:hover{ background:var(--ink); transform:translateY(-2px); box-shadow:0 16px 36px -18px rgba(97,34,59,.7); }
 .btn--gold{ background:var(--gold); color:var(--ink); }
 .btn--gold:hover{ background:var(--gold-soft); transform:translateY(-2px); box-shadow:0 16px 36px -18px rgba(202,162,88,.7); }
-.cta-note{ font-size:.92rem; color:var(--grey-soft); }
+.btn--disabled{ background:var(--paper-alt); color:var(--grey-soft); border-color:var(--line); cursor:default; pointer-events:none; box-shadow:none; transform:none; }
+.cta-note{ font-size:.92rem; color:var(--grey-soft); max-width:54ch; }
 
 /* =============================================================================
    EVENTS
