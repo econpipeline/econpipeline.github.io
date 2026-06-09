@@ -227,37 +227,41 @@ section{ position:relative; }
 /* =============================================================================
    ENDORSEMENT
    ========================================================================== */
+.endorsement .section-head{ margin-inline:auto; text-align:center; }
+.endorsement .section-head .lede{ margin-inline:auto; }
+
 .endorse{
-  margin-top:clamp(2rem,4vw,3rem); display:grid;
-  grid-template-columns:1.1fr 1fr; gap:clamp(2rem,5vw,4rem); align-items:start;
+  margin:clamp(2.4rem,5vw,3.6rem) auto 0; max-width:640px;
+  display:flex; flex-direction:column; align-items:center; text-align:center;
 }
-.endorse__prose p{ color:var(--grey); font-weight:300; font-size:clamp(1.02rem,1.5vw,1.18rem); line-height:1.65; }
-.endorse__prose p + p{ margin-top:1.1rem; }
 
-.endorse__quote{
-  background:#fff; border:1px solid var(--line); border-radius:2px;
-  border-left:3px solid var(--gold); padding:clamp(1.8rem,3vw,2.4rem);
+.endorse__bubble{
+  position:relative; width:100%; background:#fff;
+  border:1px solid var(--line); border-radius:18px;
+  padding:clamp(2.6rem,4vw,3.2rem) clamp(1.8rem,3.4vw,2.6rem) clamp(1.9rem,3vw,2.3rem);
 }
-.endorse__quote blockquote p{
-  color:var(--maroon); font-weight:300; font-style:italic;
-  font-size:clamp(1.05rem,1.6vw,1.28rem); line-height:1.5;
+.endorse__bubble::before{
+  content:"\201C"; position:absolute; top:.4rem; left:1.4rem;
+  font-size:3.4rem; line-height:1; color:var(--gold); font-weight:700;
 }
-.endorse__quote blockquote p + p{ margin-top:1rem; }
+.endorse__bubble::after{
+  content:""; position:absolute; left:50%; bottom:-9px;
+  width:18px; height:18px; background:#fff; transform:translateX(-50%) rotate(45deg);
+  border-right:1px solid var(--line); border-bottom:1px solid var(--line);
+}
+.endorse__bubble p{
+  font-weight:300; font-style:italic; color:var(--maroon);
+  font-size:clamp(1.12rem,1.9vw,1.5rem); line-height:1.5;
+}
 
-.endorse__by{
-  margin-top:1.6rem; padding-top:1.4rem; border-top:1px solid var(--line);
-  display:flex; align-items:center; gap:1rem;
-}
+.endorse__by{ margin-top:1.9rem; display:flex; flex-direction:column; align-items:center; }
 .endorse__by img{
   width:96px; height:96px; border-radius:50%; object-fit:cover; object-position:center top;
-  filter:grayscale(1); transition:filter .5s var(--ease); box-shadow:0 0 0 1px var(--line); flex:0 0 auto;
+  filter:grayscale(1); transition:filter .5s var(--ease); box-shadow:0 0 0 1px var(--line); margin-bottom:.9rem;
 }
-.endorse__by:hover img{ filter:grayscale(0); }
-.endorse__id{ display:flex; flex-direction:column; }
-.endorse__name{ font-weight:700; font-size:.98rem; color:var(--black); }
+.endorse:hover .endorse__by img{ filter:grayscale(0); }
+.endorse__name{ font-weight:700; font-size:1rem; color:var(--black); }
 .endorse__role{ font-size:.82rem; color:var(--grey-soft); margin-top:.2rem; }
-
-@media (max-width:900px){ .endorse{ grid-template-columns:1fr; } }
 
 /* =============================================================================
    STUDENTS
@@ -403,7 +407,7 @@ section{ position:relative; }
 .partners .lede a{ color:var(--maroon); font-weight:500; border-bottom:1px solid var(--gold); padding-bottom:1px; transition:.3s var(--ease); }
 .partners .lede a:hover{ color:var(--ink); border-bottom-color:var(--maroon); }
 
-/* Confirmed external mentors — photo cards (matches keynote treatment) */
+/* Confirmed external mentors – photo cards (matches keynote treatment) */
 .mentors__people{ display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:1.4rem 1rem; margin-bottom:1.1rem; }
 .mentors__person{ display:flex; flex-direction:column; align-items:center; text-align:center; }
 .mentors__person img{ width:96px; height:96px; border-radius:50%; object-fit:cover; object-position:center top; filter:grayscale(1); transition:filter .5s var(--ease); margin-bottom:.8rem; box-shadow:0 0 0 1px var(--line); }
