@@ -227,8 +227,8 @@ section{ position:relative; }
 /* =============================================================================
    ENDORSEMENT
    ========================================================================== */
-.endorsement .section-head{ margin-inline:auto; text-align:center; }
-.endorsement .section-head .lede{ margin-inline:auto; }
+.endorsement .section-head{ max-width:82ch; margin-inline:auto; text-align:center; }
+.endorsement .section-head .lede{ max-width:78ch; margin-inline:auto; }
 
 .endorse{
   margin:clamp(2.4rem,5vw,3.6rem) auto 0; max-width:640px;
