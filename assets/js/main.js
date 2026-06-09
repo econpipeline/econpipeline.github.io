@@ -46,34 +46,6 @@
     sections.forEach(function (s) { if (s) spy.observe(s); });
   }
 
-  /* ---------- Count-up on data-count ---------- */
-  function countUp(el) {
-    var target = parseInt(el.getAttribute("data-count"), 10);
-    if (isNaN(target) || reduce) { el.textContent = el.getAttribute("data-count"); return; }
-    var dur = 900, start = null;
-    function step(ts) {
-      if (!start) start = ts;
-      var p = Math.min((ts - start) / dur, 1);
-      var eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(eased * target).toString();
-      if (p < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-  var counters = document.querySelectorAll("[data-count]");
-  if (showAll) {
-    counters.forEach(function (el) { el.textContent = el.getAttribute("data-count"); });
-  } else if ("IntersectionObserver" in window && !reduce) {
-    var cio = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { countUp(e.target); cio.unobserve(e.target); }
-      });
-    }, { threshold: 0.6 });
-    counters.forEach(function (el) { cio.observe(el); });
-  } else {
-    counters.forEach(function (el) { el.textContent = el.getAttribute("data-count"); });
-  }
-
   /* ---------- Mobile menu ---------- */
   var toggle = document.getElementById("navToggle");
   var menu = document.getElementById("menu");

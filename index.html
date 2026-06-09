@@ -18,6 +18,9 @@
 <link rel="preload" as="font" type="font/ttf" href="assets/fonts/Raleway-SemiBold.ttf" crossorigin>
 <link rel="preload" as="font" type="font/ttf" href="assets/fonts/Raleway-Bold.ttf" crossorigin>
 <link rel="stylesheet" href="assets/css/styles.css">
+
+<!-- Privacy-friendly, cookieless analytics (Plausible). No cookies, no consent banner needed. -->
+<script defer data-domain="econpipeline.org" src="https://plausible.io/js/script.tagged-events.js"></script>
 </head>
 <body>
 
@@ -71,22 +74,16 @@
   </svg>
 
   <div class="hero__inner reveal">
-    <div class="hero__figure">
-      <span class="hero__num" data-count="2">2</span>
+    <p class="label label--gold">A bursary &amp; training programme &middot; Stellenbosch University</p>
+
+    <h1 class="hero__title">We back South Africa&rsquo;s smartest minds to train at the world&rsquo;s top economics departments.</h1>
+
+    <p class="hero__sub">A bursary of R200,000 a year, two mentors and a clear route from honours at Stellenbosch to a PhD at a leading department abroad. Most students who could get in never apply. Don&rsquo;t be one of them.</p>
+
+    <div class="hero__cta">
+      <a class="btn btn--gold plausible-event-name=Hero+Apply" href="#students">Apply</a>
+      <a class="btn btn--ghost plausible-event-name=Hero+Fund" href="#donors">Fund a bursary</a>
     </div>
-
-    <p class="hero__lead">
-      Among the graduate students in the top fifty economics PhD programmes
-      in the United States, two are South African and
-      <span class="num" data-count="47">47</span> are Brazilian.
-    </p>
-
-    <p class="hero__claim">South Africa has the talent. What it lacks is a reliable path into the world&rsquo;s leading PhD programmes. The Pipeline is built to provide one.</p>
-
-    <p class="hero__source">
-      <a href="https://www.ourlongwalk.com/p/the-thin-pipeline" target="_blank" rel="noopener">Source</a>:
-      a count of African PhD students across the top 50 US economics departments, October 2025.
-    </p>
   </div>
 
   <a class="hero__scroll" href="#vision" aria-label="Scroll to read more">
@@ -95,14 +92,25 @@
   </a>
 </section>
 
+<!-- ============================== ENDORSEMENT BAND ============================== -->
+<section class="endorse-band" aria-label="Endorsement">
+  <div class="wrap endorse-band__inner reveal">
+    <img class="endorse-band__photo" src="assets/img/pieterse.jpg" alt="Dr Duncan Pieterse">
+    <blockquote class="endorse-band__quote">
+      <p>&ldquo;The depth of South Africa&rsquo;s technical policy capacity is a matter of national interest, and I welcome a programme designed to add to it. I am glad to be named as endorsing this aim.&rdquo;</p>
+      <footer class="endorse-band__by">Dr Duncan Pieterse &middot; Director-General, National Treasury</footer>
+    </blockquote>
+  </div>
+</section>
+
 <!-- ============================== VISION ============================== -->
 <section class="vision section--dark" id="vision">
   <div class="wrap">
     <p class="label label--gold reveal">The vision</p>
-    <h2 class="display reveal">Where economists are trained matters.</h2>
+    <h2 class="display reveal">Training at the frontier.</h2>
     <div class="vision__lead reveal">
-      <p>Where economists train shapes the work they go on to do. The leading departments pass on technical skills, but also research norms, professional networks and the judgement that comes from working alongside people who set the research agenda internationally. A South African trained in one of these departments can put that preparation to work on questions about the country, combining advanced methods with close knowledge of local institutions, history and data, wherever they are based.</p>
-      <p class="vision__thesis">Whether they stay abroad or return, these economists matter to South Africa. They produce research that bears on the country&rsquo;s economic prospects, they open doors for the students who follow, and they build the networks and datasets that good research depends on. In South African economics, all of this is scarce.</p>
+      <p>The leading economics departments offer training that is hard to find elsewhere: advanced methods, exacting standards, and daily contact with researchers who set the international agenda. Training is not destiny, and good economists come from many places. But the preparation helps, and few South Africans currently get it: at <a href="https://www.ourlongwalk.com/p/the-thin-pipeline" target="_blank" rel="noopener">our last count</a>, the top fifty US economics PhD programmes had two South African students. Brazil had 47.</p>
+      <p class="vision__thesis">Whether they return or stay abroad, South Africans trained at this level tend to keep working on South African questions, to open doors for the students who follow, and to build the data and networks good research depends on. The Pipeline exists to make that path easier to find &ndash; and to fund.</p>
     </div>
 
     <ol class="stages reveal" aria-label="The broader pipeline strategy">
@@ -127,28 +135,6 @@
         <p>Researchers trained at strong international universities, who raise local research standards and mentor students and PhD candidates.</p>
       </li>
     </ol>
-  </div>
-</section>
-
-<!-- ============================== ENDORSEMENT ============================== -->
-<section class="endorsement section--light section--alt" id="endorsement">
-  <div class="wrap">
-    <header class="section-head reveal">
-      <p class="label">Endorsement</p>
-      <h2 class="display display--dark">A matter of national interest.</h2>
-      <p class="lede">Frontier training shapes the depth of technical expertise the state can draw on, in the Treasury, the Reserve Bank, and the many departments where costs and benefits must be weighed. Good economic policy depends on people who can build the models behind it and judge when to trust them; a state with that capacity spends better, regulates more wisely, and is harder to capture by narrow interests. Every economist trained at the frontier deepens that capacity and helps train the next.</p>
-    </header>
-
-    <figure class="endorse reveal">
-      <blockquote class="endorse__bubble">
-        <p>The depth of South Africa&rsquo;s technical policy capacity is a matter of national interest, and I welcome a programme designed to add to it. I am glad to be named as endorsing this aim.</p>
-      </blockquote>
-      <figcaption class="endorse__by">
-        <img src="assets/img/pieterse.jpg" alt="Dr Duncan Pieterse" loading="lazy">
-        <span class="endorse__name">Dr Duncan Pieterse</span>
-        <span class="endorse__role">Director-General, National Treasury</span>
-      </figcaption>
-    </figure>
   </div>
 </section>
 
@@ -221,7 +207,7 @@
     </div>
 
     <div class="cta-row reveal">
-      <a class="btn btn--solid" id="applyBtn" href="mailto:apply@econpipeline.org?subject=Application%20%E2%80%93%20South%20African%20Economics%20Pipeline&amp;body=Before%20sending%2C%20please%20attach%3A%0A-%20Your%20two-page%20personal%20statement%0A-%20An%20updated%20CV%0A-%20Full%20academic%20transcripts%0A%0AYour%20two%20reference%20letters%20must%20be%20emailed%20to%20apply@econpipeline.org%20directly%20by%20your%20referees%20(not%20attached%20by%20you).%20Please%20ask%20both%20referees%20to%20send%20their%20letter%20with%20your%20name%20in%20the%20subject%20line.%0A%0AYour%20details%3A%0AName%3A%0AUniversity%3A%0AYear%20of%20study%3A%0ACumulative%20average%20(last%20two%20years)%3A">Apply now</a>
+      <a class="btn btn--solid plausible-event-name=Apply" id="applyBtn" href="mailto:apply@econpipeline.org?subject=Application%20%E2%80%93%20South%20African%20Economics%20Pipeline&amp;body=Before%20sending%2C%20please%20attach%3A%0A-%20Your%20two-page%20personal%20statement%0A-%20An%20updated%20CV%0A-%20Full%20academic%20transcripts%0A%0AYour%20two%20reference%20letters%20must%20be%20emailed%20to%20apply@econpipeline.org%20directly%20by%20your%20referees%20(not%20attached%20by%20you).%20Please%20ask%20both%20referees%20to%20send%20their%20letter%20with%20your%20name%20in%20the%20subject%20line.%0A%0AYour%20details%3A%0AName%3A%0AUniversity%3A%0AYear%20of%20study%3A%0ACumulative%20average%20(last%20two%20years)%3A">Apply now</a>
       <span class="cta-note">Applications open 15 June and close 31 August 2026. Send your application to <a href="mailto:apply@econpipeline.org">apply@econpipeline.org</a>, and ask your two referees to email their letters there directly.</span>
     </div>
 
@@ -304,7 +290,7 @@
         <p class="event__date">November 2027 &middot; Inaugural</p>
         <h3 class="event__title">Stellenbosch Economics Summer School</h3>
         <p class="event__body">Two weeks of intensive, PhD-level short courses taught by visiting scholars, with the topics changing from year to year. The courses build advanced method and give students sustained contact with established researchers. Attendance is required for bursars, and a limited number of places are open by application to graduate students from across the country.</p>
-        <p class="event__tag">Modelled on Latin America&rsquo;s summer schools, above all the <a href="https://www.bogotasummerschoolineconomics.co/" target="_blank" rel="noopener">Bogot&aacute; Summer School</a> at Universidad de los Andes, which helped turn the region&rsquo;s departments into pipelines to top US PhD programmes, as they did at <a href="https://www.df.cl/economia-y-politica/pais/chicago-el-destino-que-mas-se-repite-quienes-son-y-donde-haran-los" target="_blank" rel="noopener">PUC Chile</a> and <a href="https://epge.fgv.br/" target="_blank" rel="noopener">FGV EPGE</a> in Brazil.</p>
+        <p class="event__tag">First courses and visiting scholars announced in 2027.</p>
       </article>
 
     </div>
@@ -439,10 +425,6 @@
             <img src="assets/img/olckers.jpg" alt="Matthew Olckers" loading="lazy">
             <a href="https://matthewolckers.com/" target="_blank" rel="noopener">Matthew Olckers</a>
           </div>
-          <div class="mentors__person">
-            <img src="assets/img/shepherd.jpg" alt="Debra Shepherd" loading="lazy">
-            <a href="https://www.ekon.sun.ac.za/staff/shepherd-debra" target="_blank" rel="noopener">Debra Shepherd</a>
-          </div>
         </div>
         <h3 class="mentors__head mentors__head--spaced">Stellenbosch postdoctoral fellows</h3>
         <div class="mentors__people">
@@ -465,7 +447,7 @@
 <section class="donors section--dark" id="donors">
   <div class="wrap">
     <p class="label label--gold reveal">Donors &amp; partners</p>
-    <h2 class="display reveal">The programme is built.<br>It now needs bursaries.</h2>
+    <h2 class="display reveal">Fund a future economist.</h2>
 
     <div class="donors__lead reveal">
       <p>The Millennium Trust funds the programme&rsquo;s first bursaries and its running costs. To support more students each year, we invite further donors to fund individual bursaries on the same terms.</p>
@@ -484,12 +466,11 @@
       </ul>
     </div>
 
-    <!-- Giving mechanics – placeholder pending alumni / development office -->
     <div class="give__how reveal">
       <p class="give__how-label">To make a commitment</p>
-      <p class="give__how-body">To discuss funding a bursary, please contact Prof.&nbsp;Johan Fourie directly. EFT, online giving and Section&nbsp;18A tax-deductible details will be added here once arrangements with the Stellenbosch University Development &amp; Alumni Relations office are finalised.</p>
-      <a class="btn btn--gold" href="mailto:info@econpipeline.org?subject=The%20South%20African%20Economics%20Pipeline%20%E2%80%93%20funding%20a%20bursary">Fund a bursary</a>
-      <p class="give__how-link">Or download the <a href="donor-factsheet.pdf">one-page donor factsheet (PDF)</a> to share.</p>
+      <p class="give__how-body">To fund a bursary, or for Section&nbsp;18A tax-deduction and giving details, write to <a href="mailto:info@econpipeline.org?subject=The%20South%20African%20Economics%20Pipeline%20%E2%80%93%20funding%20a%20bursary">info@econpipeline.org</a>.</p>
+      <a class="btn btn--gold plausible-event-name=Fund+a+bursary" href="mailto:info@econpipeline.org?subject=The%20South%20African%20Economics%20Pipeline%20%E2%80%93%20funding%20a%20bursary">Fund a bursary</a>
+      <p class="give__how-link">Or download the <a class="plausible-event-name=Factsheet+download" href="donor-factsheet.pdf">one-page donor factsheet (PDF)</a> to share.</p>
     </div>
 
     <div class="current-donors reveal">
