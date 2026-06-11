@@ -469,8 +469,8 @@
 
     <div class="give__how reveal">
       <p class="give__how-label">To make a commitment</p>
-      <p class="give__how-body">To fund a bursary, or for Section&nbsp;18A tax-deduction and giving details, write to <a href="mailto:info@econpipeline.org?subject=The%20South%20African%20Economics%20Pipeline%20%E2%80%93%20funding%20a%20bursary">info@econpipeline.org</a>.</p>
-      <a class="btn btn--gold plausible-event-name=Fund+a+bursary" href="mailto:info@econpipeline.org?subject=The%20South%20African%20Economics%20Pipeline%20%E2%80%93%20funding%20a%20bursary">Fund a bursary</a>
+      <p class="give__how-body">Give by electronic transfer to Stellenbosch University, quoting a reference we can track. For Section&nbsp;18A tax-deduction details, write to <a href="mailto:info@econpipeline.org?subject=The%20South%20African%20Economics%20Pipeline%20%E2%80%93%20Section%2018A">info@econpipeline.org</a>.</p>
+      <button type="button" class="btn btn--gold plausible-event-name=Fund+a+bursary" data-give>Fund a bursary</button>
       <p class="give__how-link">Or download the <a class="plausible-event-name=Factsheet+download" href="donor-factsheet.pdf">one-page donor factsheet (PDF)</a> to share.</p>
     </div>
 
@@ -484,6 +484,70 @@
     </div>
   </div>
 </section>
+
+<!-- ============================== FUND A BURSARY (modal) ============================== -->
+<dialog class="give-modal" id="giveModal" aria-labelledby="giveModalTitle">
+  <form method="dialog" class="give-modal__close-form">
+    <button class="give-modal__close" value="close" aria-label="Close">&times;</button>
+  </form>
+
+  <div class="give-modal__body">
+    <p class="label label--gold">Fund a bursary</p>
+    <h2 id="giveModalTitle" class="give-modal__title">Give by transfer, and we&rsquo;ll track it.</h2>
+    <p class="give-modal__intro">Pay by electronic transfer to Stellenbosch University, quoting the reference below so our finance office can identify your gift. Tell us your name and amount, then email us your pledge so we can match the payment.</p>
+
+    <!-- Step 1: details so we can build the reference -->
+    <div class="give-modal__fields">
+      <label class="give-field">
+        <span class="give-field__label">Your name</span>
+        <input type="text" id="giveName" name="name" autocomplete="name" placeholder="e.g. Thandi Smith">
+      </label>
+      <label class="give-field">
+        <span class="give-field__label">Amount (Rand)</span>
+        <input type="text" id="giveAmount" name="amount" inputmode="numeric" placeholder="200000" value="200000">
+      </label>
+    </div>
+    <div class="give-amounts" aria-label="Suggested amounts">
+      <button type="button" class="give-chip" data-amount="200000">R200,000 &middot; one full bursary</button>
+      <button type="button" class="give-chip" data-amount="100000">R100,000 &middot; half a bursary</button>
+      <button type="button" class="give-chip" data-amount="">Other</button>
+    </div>
+
+    <!-- Reference -->
+    <div class="give-ref">
+      <span class="give-ref__label">Your payment reference</span>
+      <div class="give-ref__row">
+        <code class="give-ref__value" id="giveRef">ECONPIPELINE</code>
+        <button type="button" class="give-copy" data-copy-ref aria-label="Copy reference">Copy</button>
+      </div>
+      <p class="give-ref__note">Quote this exactly in the payment reference field so finance can identify your gift.</p>
+    </div>
+
+    <!-- Bank details: keep in sync with give.html -->
+    <div class="give-bank">
+      <p class="give-bank__head">Bank details</p>
+      <dl class="give-bank__list">
+        <div class="give-bank__row"><dt>Account holder</dt><dd data-bank="SU GENERAL (Stellenbosch University)">SU GENERAL (Stellenbosch University)<button type="button" class="give-copy give-copy--mini" aria-label="Copy account holder">Copy</button></dd></div>
+        <div class="give-bank__row"><dt>Bank</dt><dd data-bank="Standard Bank">Standard Bank<button type="button" class="give-copy give-copy--mini" aria-label="Copy bank">Copy</button></dd></div>
+        <div class="give-bank__row"><dt>Account number</dt><dd data-bank="073006955">073006955<button type="button" class="give-copy give-copy--mini" aria-label="Copy account number">Copy</button></dd></div>
+        <div class="give-bank__row"><dt>Branch code</dt><dd data-bank="051001">051001<button type="button" class="give-copy give-copy--mini" aria-label="Copy branch code">Copy</button></dd></div>
+        <div class="give-bank__row"><dt>SWIFT (international)</dt><dd data-bank="SBZA ZA JJ">SBZA ZA JJ<button type="button" class="give-copy give-copy--mini" aria-label="Copy SWIFT">Copy</button></dd></div>
+      </dl>
+      <button type="button" class="give-copy give-copy--all" data-copy-all>Copy all details</button>
+    </div>
+
+    <label class="give-18a">
+      <input type="checkbox" id="give18a"> I&rsquo;d like a Section&nbsp;18A tax certificate.
+    </label>
+
+    <!-- Actions -->
+    <div class="give-modal__actions">
+      <a class="btn btn--gold plausible-event-name=Give+pledge+email" id="givePledge" href="mailto:info@econpipeline.org">Email your pledge</a>
+      <a class="btn btn--ghost-dark plausible-event-name=Give+details+page" id="givePrint" href="give.html" target="_blank" rel="noopener">Open printable details</a>
+    </div>
+    <p class="give-modal__fineprint">The reference on your transfer is what lets us reconcile the gift; the email is a heads-up so we know it&rsquo;s coming. Same account for local and international payments.</p>
+  </div>
+</dialog>
 
 </main>
 

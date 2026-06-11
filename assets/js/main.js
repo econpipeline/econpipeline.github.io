@@ -77,6 +77,116 @@
   });
   if (rmButtons.length) selectMilestone(0);
 
+  /* ---------- Fund a bursary modal ---------- */
+  var giveModal = document.getElementById("giveModal");
+  if (giveModal && typeof giveModal.showModal === "function") {
+    var nameInput = document.getElementById("giveName");
+    var amountInput = document.getElementById("giveAmount");
+    var refEl = document.getElementById("giveRef");
+    var pledgeBtn = document.getElementById("givePledge");
+    var printBtn = document.getElementById("givePrint");
+    var ref18a = document.getElementById("give18a");
+    var chips = Array.prototype.slice.call(document.querySelectorAll(".give-chip"));
+
+    // Build "ECONPIPELINE <SURNAME>", capped at 20 chars for bank reference fields.
+    function buildRef() {
+      var name = (nameInput.value || "").trim();
+      if (!name) return "ECONPIPELINE";
+      var parts = name.split(/\s+/);
+      var surname = parts[parts.length - 1].toUpperCase().replace(/[^A-Z]/g, "");
+      if (!surname) return "ECONPIPELINE";
+      return ("ECONPIPELINE " + surname).slice(0, 20).trim();
+    }
+    function cleanAmount() { return (amountInput.value || "").replace(/[^0-9]/g, ""); }
+    function prettyAmount(a) { return a ? "R" + Number(a).toLocaleString("en-ZA") : ""; }
+
+    function refresh() {
+      var ref = buildRef();
+      var amt = cleanAmount();
+      refEl.textContent = ref;
+
+      // Printable page link, personalised.
+      var q = [];
+      if (nameInput.value.trim()) q.push("name=" + encodeURIComponent(nameInput.value.trim()));
+      if (amt) q.push("amt=" + encodeURIComponent(amt));
+      printBtn.setAttribute("href", "give.html" + (q.length ? "?" + q.join("&") : ""));
+
+      // Pre-filled pledge email to info@.
+      var name = nameInput.value.trim() || "(your name)";
+      var amtLine = amt ? prettyAmount(amt) : "(amount)";
+      var lines = [
+        "I would like to fund a bursary in The South African Economics Pipeline.",
+        "",
+        "Name: " + name,
+        "Amount: " + amtLine,
+        "Payment reference: " + ref,
+        ref18a && ref18a.checked ? "I would like a Section 18A tax certificate." : "",
+        "",
+        "I will pay by electronic transfer to the Stellenbosch University account, quoting the reference above."
+      ].filter(function (l) { return l !== null; });
+      var subject = "Pipeline bursary pledge – " + name;
+      pledgeBtn.setAttribute("href",
+        "mailto:info@econpipeline.org?subject=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(lines.join("\n")));
+    }
+
+    function openGive() { refresh(); giveModal.showModal(); }
+    document.querySelectorAll("[data-give]").forEach(function (b) {
+      b.addEventListener("click", function (e) { e.preventDefault(); openGive(); });
+    });
+    // Close on backdrop click (clicks on the dialog element itself, not its content).
+    giveModal.addEventListener("click", function (e) { if (e.target === giveModal) giveModal.close(); });
+
+    nameInput.addEventListener("input", refresh);
+    amountInput.addEventListener("input", function () {
+      chips.forEach(function (c) { c.classList.toggle("active", c.getAttribute("data-amount") === cleanAmount()); });
+      refresh();
+    });
+    if (ref18a) ref18a.addEventListener("change", refresh);
+    chips.forEach(function (c) {
+      c.addEventListener("click", function () {
+        amountInput.value = c.getAttribute("data-amount");
+        chips.forEach(function (o) { o.classList.toggle("active", o === c); });
+        refresh();
+      });
+    });
+
+    /* ---------- Copy buttons ---------- */
+    function flash(btn) {
+      var prev = btn.textContent;
+      btn.classList.add("copied"); btn.textContent = "Copied ✓";
+      setTimeout(function () { btn.classList.remove("copied"); btn.textContent = prev; }, 1400);
+    }
+    function copyText(text, btn) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { flash(btn); }).catch(function () { legacyCopy(text, btn); });
+      } else { legacyCopy(text, btn); }
+    }
+    function legacyCopy(text, btn) {
+      var ta = document.createElement("textarea");
+      ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "absolute"; ta.style.left = "-9999px";
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); flash(btn); } catch (err) { /* no-op */ }
+      document.body.removeChild(ta);
+    }
+
+    document.querySelectorAll(".give-bank__row .give-copy--mini").forEach(function (btn) {
+      btn.addEventListener("click", function () { copyText(btn.parentNode.getAttribute("data-bank"), btn); });
+    });
+    var copyRefBtn = giveModal.querySelector("[data-copy-ref]");
+    if (copyRefBtn) copyRefBtn.addEventListener("click", function () { copyText(refEl.textContent, copyRefBtn); });
+
+    var copyAllBtn = giveModal.querySelector("[data-copy-all]");
+    if (copyAllBtn) copyAllBtn.addEventListener("click", function () {
+      var rows = Array.prototype.slice.call(document.querySelectorAll(".give-bank__row"));
+      var block = rows.map(function (r) {
+        return r.querySelector("dt").textContent + ": " + r.querySelector("dd").getAttribute("data-bank");
+      });
+      block.push("Reference: " + refEl.textContent);
+      copyText(block.join("\n"), copyAllBtn);
+    });
+  }
+
   /* ---------- Apply button: opens 15 June 2026 ---------- */
   var applyBtn = document.getElementById("applyBtn");
   if (applyBtn && !showAll) {

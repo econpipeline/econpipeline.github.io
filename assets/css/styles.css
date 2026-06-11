@@ -482,6 +482,82 @@ section{ position:relative; }
 .hero__inner.reveal{ transform:none; }
 
 /* =============================================================================
+   GIVE MODAL  (Fund a bursary)
+   ========================================================================== */
+/* Ghost button on a light surface (the modal); .btn--ghost is for dark areas. */
+.btn--ghost-dark{ background:transparent; color:var(--maroon); border-color:var(--gold); }
+.btn--ghost-dark:hover{ background:var(--maroon); color:#fff; border-color:var(--maroon); transform:translateY(-2px); }
+
+.give-modal{
+  border:0; border-radius:3px; padding:0; width:min(560px, calc(100vw - 2rem));
+  background:var(--paper); color:var(--black);
+  box-shadow:0 40px 120px -40px rgba(22,10,16,.7);
+}
+.give-modal::backdrop{ background:rgba(22,10,16,.62); }
+.give-modal[open]{ animation:giveIn .3s var(--ease); }
+@keyframes giveIn{ from{ opacity:0; transform:translateY(12px); } to{ opacity:1; transform:none; } }
+
+.give-modal__close-form{ position:sticky; top:0; display:flex; justify-content:flex-end; }
+.give-modal__close{
+  background:none; border:0; cursor:pointer; font-size:1.8rem; line-height:1;
+  color:var(--grey-soft); padding:.7rem 1rem .3rem; transition:color .25s var(--ease);
+}
+.give-modal__close:hover{ color:var(--maroon); }
+
+.give-modal__body{ padding:0 clamp(1.4rem,4vw,2.4rem) clamp(1.6rem,4vw,2.2rem); }
+.give-modal__title{ font-weight:200; font-size:clamp(1.5rem,4vw,2rem); line-height:1.1; color:var(--maroon); letter-spacing:-.01em; margin:.5rem 0 .8rem; }
+.give-modal__intro{ font-weight:300; font-size:.96rem; line-height:1.55; color:var(--grey); }
+
+.give-modal__fields{ display:grid; grid-template-columns:1.4fr 1fr; gap:1rem; margin-top:1.4rem; }
+.give-field{ display:flex; flex-direction:column; gap:.35rem; }
+.give-field__label{ font-size:.74rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--grey); }
+.give-field input{
+  font-family:inherit; font-size:1rem; color:var(--ink);
+  padding:.6rem .75rem; border:1px solid var(--line); border-radius:2px; background:#fff;
+  transition:border-color .25s var(--ease);
+}
+.give-field input:focus{ outline:none; border-color:var(--gold); }
+
+.give-amounts{ display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.8rem; }
+.give-chip{
+  font-family:inherit; font-size:.82rem; cursor:pointer;
+  padding:.4rem .8rem; border:1px solid var(--line); border-radius:100px; background:#fff; color:var(--grey);
+  transition:.25s var(--ease);
+}
+.give-chip:hover{ border-color:var(--gold); color:var(--maroon); }
+.give-chip.active{ background:var(--maroon); color:#fff; border-color:var(--maroon); }
+
+.give-ref{ margin-top:1.6rem; border:1px solid var(--gold-soft); border-left:3px solid var(--gold); background:#fcf9f2; padding:1rem 1.1rem; }
+.give-ref__label{ font-size:.72rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--grey-soft); }
+.give-ref__row{ display:flex; align-items:center; gap:.8rem; margin-top:.4rem; }
+.give-ref__value{ font-family:"Trebuchet MS", monospace; font-size:clamp(1.1rem,3vw,1.35rem); font-weight:700; letter-spacing:.04em; color:var(--maroon); }
+.give-ref__note{ margin-top:.5rem; font-size:.82rem; line-height:1.5; color:var(--grey); }
+
+.give-bank{ margin-top:1.4rem; }
+.give-bank__head{ font-size:.72rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--grey-soft); margin-bottom:.4rem; }
+.give-bank__list{ border-top:1px solid var(--line); }
+.give-bank__row{ display:flex; justify-content:space-between; align-items:baseline; gap:1rem; padding:.55rem 0; border-bottom:1px solid var(--line); }
+.give-bank__row dt{ font-size:.84rem; color:var(--grey); flex-shrink:0; }
+.give-bank__row dd{ display:flex; align-items:center; gap:.6rem; font-weight:600; font-size:.92rem; color:var(--black); text-align:right; }
+
+.give-copy{
+  font-family:inherit; cursor:pointer; background:none; color:var(--maroon);
+  border:1px solid var(--line); border-radius:2px; padding:.3rem .7rem; font-size:.74rem; font-weight:600;
+  letter-spacing:.04em; transition:.25s var(--ease);
+}
+.give-copy:hover{ border-color:var(--gold); color:var(--ink); }
+.give-copy.copied{ background:var(--maroon); color:#fff; border-color:var(--maroon); }
+.give-copy--mini{ padding:.18rem .5rem; font-size:.68rem; }
+.give-copy--all{ margin-top:.9rem; }
+
+.give-18a{ display:flex; align-items:flex-start; gap:.55rem; margin-top:1.3rem; font-size:.88rem; color:var(--grey); line-height:1.45; cursor:pointer; }
+.give-18a input{ margin-top:.18rem; accent-color:var(--maroon); }
+
+.give-modal__actions{ margin-top:1.6rem; display:flex; gap:.8rem; flex-wrap:wrap; }
+.give-modal__actions .btn{ flex:1 1 auto; text-align:center; }
+.give-modal__fineprint{ margin-top:1.1rem; font-size:.78rem; line-height:1.5; color:var(--grey-soft); }
+
+/* =============================================================================
    RESPONSIVE
    ========================================================================== */
 @media (max-width:900px){
@@ -506,6 +582,7 @@ section{ position:relative; }
   .keynotes__list{ gap:.5rem; }
   .keynotes__list img{ width:80px; height:80px; }
   .endorse-band__inner{ flex-direction:column; text-align:center; }
+  .give-modal__fields{ grid-template-columns:1fr; }
 }
 
 /* =============================================================================

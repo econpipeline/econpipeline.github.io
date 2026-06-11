@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fund a bursary &ndash; banking details &middot; The South African Economics Pipeline</title>
+<meta name="description" content="Banking details for funding a bursary in The South African Economics Pipeline, hosted by the Department of Economics, Stellenbosch University.">
+<meta name="robots" content="noindex">
+
+<link rel="preload" as="font" type="font/ttf" href="assets/fonts/Raleway-Thin.ttf" crossorigin>
+<link rel="preload" as="font" type="font/ttf" href="assets/fonts/Raleway-Regular.ttf" crossorigin>
+<link rel="preload" as="font" type="font/ttf" href="assets/fonts/Raleway-SemiBold.ttf" crossorigin>
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<style>
+  /* Standalone, printable banking sheet. Tokens reused from styles.css. */
+  body{ background:var(--paper-alt); }
+  .sheet-wrap{ max-width:720px; margin-inline:auto; padding:clamp(1.4rem,5vw,3rem) var(--pad); }
+  .sheet{ background:#fff; border:1px solid var(--line); border-radius:2px; padding:clamp(1.8rem,4vw,3rem); box-shadow:0 24px 60px -40px rgba(97,34,59,.35); }
+  .sheet__back{ display:inline-block; margin-bottom:1.4rem; font-size:.82rem; font-weight:600; letter-spacing:.04em; color:var(--maroon); border-bottom:1px solid var(--gold); padding-bottom:1px; }
+  .sheet__back:hover{ color:var(--ink); }
+  .sheet h1{ font-weight:200; font-size:clamp(1.8rem,4vw,2.6rem); line-height:1.1; color:var(--maroon); letter-spacing:-.01em; margin:.4rem 0 1rem; }
+  .sheet__intro{ font-weight:300; color:var(--grey); max-width:60ch; line-height:1.6; }
+
+  .sheet-ref{ margin:1.8rem 0; border:1px solid var(--gold-soft); border-left:3px solid var(--gold); background:#fcf9f2; padding:1.2rem 1.4rem; }
+  .sheet-ref__label{ font-size:.72rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--grey-soft); }
+  .sheet-ref__value{ display:block; margin-top:.4rem; font-size:clamp(1.3rem,3vw,1.7rem); font-weight:700; letter-spacing:.02em; color:var(--maroon); }
+  .sheet-ref__note{ margin-top:.5rem; font-size:.86rem; color:var(--grey); line-height:1.5; }
+  .sheet-amount{ font-weight:700; color:var(--maroon); }
+
+  .sheet-bank{ margin-top:1.6rem; border-top:1px solid var(--line); }
+  .sheet-bank__row{ display:flex; justify-content:space-between; gap:1.4rem; padding:.75rem 0; border-bottom:1px solid var(--line); }
+  .sheet-bank__row dt{ font-size:.82rem; font-weight:500; letter-spacing:.04em; color:var(--grey); text-transform:uppercase; }
+  .sheet-bank__row dd{ font-weight:600; color:var(--black); text-align:right; }
+
+  .sheet__foot{ margin-top:1.8rem; font-size:.86rem; font-weight:300; color:var(--grey); line-height:1.55; }
+  .sheet__foot a{ color:var(--maroon); border-bottom:1px solid var(--gold); }
+  .sheet__actions{ margin-top:1.8rem; display:flex; gap:1rem; flex-wrap:wrap; }
+
+  @media print{
+    body{ background:#fff; }
+    .sheet{ box-shadow:none; border:0; padding:0; }
+    .sheet__back, .sheet__actions{ display:none; }
+    .sheet-ref{ background:#fff; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet-wrap">
+  <div class="sheet">
+    <a class="sheet__back" href="index.html#donors">&larr; Back to econpipeline.org</a>
+    <p class="label">The South African Economics Pipeline</p>
+    <h1>Banking details for your bursary gift</h1>
+    <p class="sheet__intro">Thank you for funding a future economist. Please pay by electronic transfer to the Stellenbosch University account below, quoting the reference exactly so our finance office can identify your gift. The same account receives both local and international payments.</p>
+
+    <div class="sheet-ref">
+      <span class="sheet-ref__label">Payment reference</span>
+      <code class="sheet-ref__value" id="sheetRef">ECONPIPELINE</code>
+      <p class="sheet-ref__note" id="sheetAmountNote"></p>
+    </div>
+
+    <!-- BANK DETAILS: keep in sync with the modal in index.html -->
+    <dl class="sheet-bank">
+      <div class="sheet-bank__row"><dt>Account holder</dt><dd>SU GENERAL (Stellenbosch University)</dd></div>
+      <div class="sheet-bank__row"><dt>Bank</dt><dd>Standard Bank</dd></div>
+      <div class="sheet-bank__row"><dt>Account number</dt><dd>073006955</dd></div>
+      <div class="sheet-bank__row"><dt>Account type</dt><dd>Business current account</dd></div>
+      <div class="sheet-bank__row"><dt>Branch code (electronic)</dt><dd>051001</dd></div>
+      <div class="sheet-bank__row"><dt>Branch</dt><dd>Stellenbosch</dd></div>
+      <div class="sheet-bank__row"><dt>SWIFT / BIC (international)</dt><dd>SBZA ZA JJ</dd></div>
+    </dl>
+
+    <p class="sheet__foot">Once you have made the transfer, please email <a href="mailto:info@econpipeline.org">info@econpipeline.org</a> with your name and the amount so we can match the payment. For a Section&nbsp;18A tax-deduction certificate, mention it in the same email.</p>
+
+    <div class="sheet__actions">
+      <button type="button" class="btn btn--solid" onclick="window.print()">Print / save as PDF</button>
+      <a class="btn btn--ghost-dark" href="mailto:info@econpipeline.org?subject=The%20South%20African%20Economics%20Pipeline%20%E2%80%93%20bursary%20pledge">Email your pledge</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* Personalise the reference and amount from ?name= / ?amt= — textContent only (no innerHTML), so reflected input cannot inject markup. */
+  (function () {
+    "use strict";
+    var params = new URLSearchParams(window.location.search);
+    function surnameRef(name) {
+      if (!name) return "ECONPIPELINE";
+      var parts = name.trim().split(/\s+/);
+      var surname = parts[parts.length - 1].toUpperCase().replace(/[^A-Z]/g, "");
+      if (!surname) return "ECONPIPELINE";
+      return ("ECONPIPELINE " + surname).slice(0, 20).trim();
+    }
+    var ref = surnameRef(params.get("name"));
+    document.getElementById("sheetRef").textContent = ref;
+
+    var amt = (params.get("amt") || "").replace(/[^0-9]/g, "");
+    var note = document.getElementById("sheetAmountNote");
+    if (amt) {
+      var pretty = "R" + Number(amt).toLocaleString("en-ZA");
+      note.textContent = "Intended gift: ";
+      var strong = document.createElement("span");
+      strong.className = "sheet-amount";
+      strong.textContent = pretty + ".";
+      note.appendChild(strong);
+    } else {
+      note.textContent = "Quote this reference exactly in the payment reference field.";
+    }
+  })();
+</script>
+</body>
+</html>
