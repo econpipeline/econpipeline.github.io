@@ -35,6 +35,7 @@ Website/
     ├── css/styles.css      the main design system
     ├── css/factsheet.css   styles for the two factsheets
     ├── js/main.js          scroll reveals, nav, roadmap, apply-button gate
+    ├── js/analytics.js     Google Analytics 4, loaded only after consent
     ├── fonts/              self-hosted Raleway (TTF)
     └── img/                SU logo (white SVG), keynote + mentor headshots
 ```
@@ -73,6 +74,25 @@ regenerate its PDF so the download link matches, e.g. with headless Edge:
 ```
 msedge --headless --no-pdf-header-footer --print-to-pdf="donor-factsheet.pdf" "donor-factsheet.html"
 ```
+
+## Analytics
+
+Visitor numbers are tracked with **Google Analytics 4** (property *Economics
+Pipeline*, Measurement ID `G-NXG7TZLF6J`). The tag is **not** loaded until the
+visitor clicks **Accept** on the POPIA consent banner, so no analytics cookies
+are set otherwise. All the logic lives in one shared file,
+`assets/js/analytics.js`, referenced from every page; the banner uses the
+maroon/gold brand tokens and is hidden in print so it stays out of the
+factsheet PDFs. The consent choice is remembered in `localStorage`
+(`ga-consent` = `granted` | `denied`) and shared across pages, so it shows once.
+
+- **See the numbers:** GA4 → *Reports → Realtime* (live check) and *Reports →
+  Engagement → Pages and screens* (which pages get traffic).
+- **Re-test the banner:** run `localStorage.removeItem("ga-consent")` in the
+  browser console and refresh.
+- Data runs from the June 2026 go-live onward. An earlier Plausible tag on
+  `index.html` was never connected to an account, collected nothing, and has
+  been removed – there is no historical data to recover.
 
 ## Items still to finalise
 
