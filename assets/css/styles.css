@@ -194,6 +194,16 @@ section{ position:relative; }
 .btn--ghost{ background:transparent; color:#fff; border-color:rgba(255,255,255,.45); }
 .btn--ghost:hover{ border-color:var(--gold); color:var(--gold); transform:translateY(-2px); }
 
+/* Tertiary cue to the film section – deliberately quieter than the two buttons. */
+.hero__film{
+  margin-top:1.7rem; display:inline-flex; align-items:center; gap:.65rem;
+  font-size:.9rem; font-weight:500; letter-spacing:.02em;
+  color:rgba(255,255,255,.72); transition:color .3s var(--ease);
+}
+.hero__film svg{ width:1.7rem; height:1.7rem; flex-shrink:0; opacity:.8; transition:opacity .3s var(--ease); }
+.hero__film:hover{ color:var(--gold); }
+.hero__film:hover svg{ opacity:1; }
+
 .hero__scroll{
   position:absolute; left:50%; bottom:2.2rem; transform:translateX(-50%); z-index:3;
   display:flex; flex-direction:column; align-items:center; gap:.6rem;
@@ -240,6 +250,58 @@ section{ position:relative; }
   line-height:1.55; color:rgba(255,255,255,.92); max-width:72ch;
 }
 .endorse-band__by{ margin-top:.7rem; font-size:.84rem; letter-spacing:.02em; color:var(--gold-soft); }
+
+/* =============================================================================
+   FILM
+   Flat ink, so the dark run above (hero → endorsement → vision) deepens into a
+   cinema surface before the page opens into the light Students section.
+   The player is a click-to-load facade: poster + play disc, swapped for the
+   YouTube iframe only on click (see main.js).
+   ========================================================================== */
+.film{
+  background:var(--ink); color:#fff;
+  padding-block:clamp(4rem,8vw,7rem);
+  scroll-margin-top:5rem;               /* keep the player clear of the fixed nav */
+}
+.film__lede{
+  font-weight:300; font-size:clamp(1.05rem,1.55vw,1.3rem); line-height:1.6;
+  color:rgba(255,255,255,.78); max-width:58ch; margin-top:1.5rem;
+}
+.film__meta{ color:var(--gold-soft); white-space:nowrap; }
+
+/* Facade and iframe share one box, so nothing shifts when the swap happens. */
+.film__facade,
+.film__frame{
+  display:block; width:100%; aspect-ratio:16 / 9;
+  border:1px solid rgba(202,162,88,.35); border-radius:2px;
+  background:var(--ink-2);
+  box-shadow:0 44px 110px -55px rgba(0,0,0,.95);
+}
+.film__facade{ position:relative; padding:0; overflow:hidden; cursor:pointer; font-family:inherit; }
+.film__facade:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+
+.film__poster{
+  width:100%; height:100%; object-fit:cover; opacity:.7;
+  transition:opacity .5s var(--ease), transform .8s var(--ease);
+}
+.film__scrim{
+  position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(58% 58% at 50% 50%, rgba(22,10,16,.5), transparent 72%);
+  transition:opacity .5s var(--ease);
+}
+.film__facade:hover .film__poster{ opacity:.86; transform:scale(1.02); }
+.film__facade:hover .film__scrim{ opacity:.65; }
+
+.film__play{
+  position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+  width:clamp(4.2rem,7vw,5.6rem); height:clamp(4.2rem,7vw,5.6rem); pointer-events:none;
+  transition:transform .4s var(--ease);
+  filter:drop-shadow(0 14px 30px rgba(22,10,16,.6));
+}
+.film__play-disc{ fill:var(--gold); transition:fill .35s var(--ease); }
+.film__play-tri{ fill:var(--ink); }
+.film__facade:hover .film__play{ transform:translate(-50%,-50%) scale(1.06); }
+.film__facade:hover .film__play-disc{ fill:var(--gold-soft); }
 
 /* =============================================================================
    STUDENTS
@@ -561,6 +623,11 @@ section{ position:relative; }
    RESPONSIVE
    ========================================================================== */
 @media (max-width:900px){
+  /* Hand over to the hamburger here, not at 680px: the wordmark plus six links
+     overflow below ~860px, and body has overflow-x:hidden so they were clipped. */
+  .nav__links{ display:none; }
+  .nav__toggle{ display:block; }
+
   .grid--2{ grid-template-columns:1fr; }
   .stages{ grid-template-columns:repeat(2,1fr); }
   .institutions{ grid-template-columns:repeat(2,1fr); }
@@ -572,8 +639,6 @@ section{ position:relative; }
   .roadmap__track::before{ display:none; }
 }
 @media (max-width:680px){
-  .nav__links{ display:none; }
-  .nav__toggle{ display:block; }
   .stages{ grid-template-columns:1fr; }
   .institutions{ grid-template-columns:1fr; }
   .apptimeline__track{ grid-template-columns:repeat(2,1fr); }

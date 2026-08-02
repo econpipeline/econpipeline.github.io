@@ -187,6 +187,30 @@
     });
   }
 
+  /* ---------- Film: click-to-load YouTube ----------
+     Nothing is requested from YouTube until the visitor clicks play, so no
+     third-party cookies are set on page load. The click is the consent, which
+     keeps the POPIA banner (analytics.js) meaning what it says. */
+  var filmFacade = document.querySelector(".film__facade");
+  if (filmFacade) {
+    filmFacade.addEventListener("click", function (e) {
+      e.preventDefault();                 // the href is the no-JS fallback to YouTube
+      var frame = document.createElement("iframe");
+      frame.className = "film__frame";
+      frame.title = "Why you should do a PhD in economics";
+      frame.src = "https://www.youtube-nocookie.com/embed/" +
+        filmFacade.getAttribute("data-yt") +
+        "?autoplay=1&rel=0&modestbranding=1&playsinline=1";
+      frame.setAttribute("allow",
+        "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
+      frame.setAttribute("allowfullscreen", "");
+      filmFacade.parentNode.replaceChild(frame, filmFacade);
+      frame.focus();
+      // No-op unless the visitor accepted analytics; analytics.js only then defines gtag.
+      if (window.gtag) window.gtag("event", "film_play", { video_title: "Pipeline hero film" });
+    });
+  }
+
   /* ---------- Apply button: opens 15 June 2026 ---------- */
   var applyBtn = document.getElementById("applyBtn");
   if (applyBtn && !showAll) {

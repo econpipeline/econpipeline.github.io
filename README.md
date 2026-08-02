@@ -34,10 +34,12 @@ Website/
 └── assets/
     ├── css/styles.css      the main design system
     ├── css/factsheet.css   styles for the two factsheets
-    ├── js/main.js          scroll reveals, nav, roadmap, apply-button gate
+    ├── js/main.js          scroll reveals, nav, roadmap, apply-button gate, film player
     ├── js/analytics.js     Google Analytics 4, loaded only after consent
     ├── fonts/              self-hosted Raleway (TTF)
-    └── img/                SU logo (white SVG), keynote + mentor headshots
+    └── img/                SU logo (white SVG), keynote + mentor headshots,
+                            film-poster.jpg (the film's still – swap the file to
+                            change it, no code change needed)
 ```
 
 ## Preview it locally
@@ -75,6 +77,29 @@ regenerate its PDF so the download link matches, e.g. with headless Edge:
 msedge --headless --no-pdf-header-footer --print-to-pdf="donor-factsheet.pdf" "donor-factsheet.html"
 ```
 
+## The film
+
+The Film section (between Vision and Students) carries the hero film, *"SA
+Economics Pipeline: Why you should do a PhD in economics"*
+(<https://www.youtube.com/watch?v=hkAsgt2NL6g>, ~10 min).
+
+It is **click-to-load**. What the page ships is a self-hosted poster
+(`assets/img/film-poster.jpg`) and a play button; the YouTube iframe is only
+injected when the visitor clicks, and it points at `youtube-nocookie.com`. So
+nothing is requested from YouTube – and no third-party cookie is set – until
+the visitor asks for the film. That keeps the POPIA consent banner honest: it
+covers analytics, and the film needs no separate consent because the click *is*
+the consent. It also keeps the page fast, since the ~1 MB YouTube player is
+never loaded for the majority who do not press play.
+
+The markup is a real link to YouTube that the script upgrades in place, so the
+film is still reachable if JavaScript fails, and right-click/middle-click behave
+as people expect.
+
+To change the video, edit the `data-yt` and `href` values on `.film__facade` in
+`index.html` and drop in a new `film-poster.jpg`. To change the still only,
+replace the JPG (1280×720) – no code change.
+
 ## Analytics
 
 Visitor numbers are tracked with **Google Analytics 4** (property *Economics
@@ -90,6 +115,8 @@ factsheet PDFs. The consent choice is remembered in `localStorage`
   Engagement → Pages and screens* (which pages get traffic).
 - **Re-test the banner:** run `localStorage.removeItem("ga-consent")` in the
   browser console and refresh.
+- **Film plays** fire a `film_play` event, but only for visitors who accepted
+  analytics (`window.gtag` does not exist otherwise, and the call is guarded).
 - Data runs from the June 2026 go-live onward. An earlier Plausible tag on
   `index.html` was never connected to an account, collected nothing, and has
   been removed – there is no historical data to recover.
