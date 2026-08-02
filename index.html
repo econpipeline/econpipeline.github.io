@@ -10,6 +10,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="The South African Economics Pipeline">
 <meta property="og:description" content="A selective bursary and training programme that prepares South African students for doctoral study at leading economics departments abroad.">
+<meta property="og:image" content="https://econpipeline.org/assets/img/film-poster.jpg">
 
 <!-- Preload above-the-fold fonts to avoid a flash/reflow when Raleway loads -->
 <link rel="preload" as="font" type="font/ttf" href="assets/fonts/Raleway-Thin.ttf" crossorigin>
@@ -39,6 +40,7 @@
 
     <nav class="nav__links" aria-label="Primary">
       <a href="#vision">Vision</a>
+      <a href="#film">Film</a>
       <a href="#students">Students</a>
       <a href="#events">Events</a>
       <a href="#mentors">Mentors</a>
@@ -55,6 +57,7 @@
 <div class="menu" id="menu" aria-hidden="true">
   <nav aria-label="Mobile">
     <a href="#vision">Vision</a>
+    <a href="#film">Film</a>
     <a href="#students">Students</a>
     <a href="#events">Events</a>
     <a href="#mentors">Mentors</a>
@@ -84,6 +87,14 @@
       <a class="btn btn--gold plausible-event-name=Hero+Apply" href="#students">Apply</a>
       <a class="btn btn--ghost plausible-event-name=Hero+Fund" href="#donors">Fund a bursary</a>
     </div>
+
+    <a class="hero__film" href="#film">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <circle cx="16" cy="16" r="15" fill="none" stroke="currentColor" stroke-width="1"/>
+        <path d="M13 10.5 L22 16 L13 21.5 Z" fill="currentColor"/>
+      </svg>
+      Watch the film &middot; 10 min
+    </a>
   </div>
 
   <a class="hero__scroll" href="#vision" aria-label="Scroll to read more">
@@ -135,6 +146,36 @@
         <p>Researchers trained at strong international universities, who raise local research standards and mentor students and PhD candidates.</p>
       </li>
     </ol>
+  </div>
+</section>
+
+<!-- ============================== FILM ============================== -->
+<!-- Click-to-load: the YouTube iframe is only injected on click (see main.js),
+     so nothing is requested from YouTube until the visitor asks for it. -->
+<section class="film" id="film" aria-labelledby="filmTitle">
+  <div class="wrap">
+    <header class="section-head reveal">
+      <p class="label label--gold">The film</p>
+      <h2 id="filmTitle" class="display">Six economists on why it was worth it.</h2>
+      <p class="film__lede">Jesse Naidoo grew up in a house full of books, wondering why some countries are rich and others poor. He ended up at Chicago. He and five other South African economists talk about how they found the field, what training abroad asks of you, and why you should not count yourself out. <span class="film__meta">10 min</span></p>
+    </header>
+
+    <div class="film__stage reveal">
+      <!-- A real link to YouTube, which the script upgrades into an in-page player.
+           So it still works without JS, and right-click / middle-click behave. -->
+      <a class="film__facade" data-yt="hkAsgt2NL6g"
+         href="https://www.youtube.com/watch?v=hkAsgt2NL6g"
+         aria-label="Play the film: Why you should do a PhD in economics. 10 minutes.">
+        <img class="film__poster" src="assets/img/film-poster.jpg" alt=""
+             width="1280" height="720" loading="lazy" decoding="async">
+        <span class="film__scrim" aria-hidden="true"></span>
+        <svg class="film__play" viewBox="0 0 96 96" aria-hidden="true">
+          <circle cx="48" cy="48" r="47" class="film__play-disc"/>
+          <!-- nudged right of geometric centre so it reads optically centred in the disc -->
+          <path d="M40 28 L73 48 L40 68 Z" class="film__play-tri"/>
+        </svg>
+      </a>
+    </div>
   </div>
 </section>
 
