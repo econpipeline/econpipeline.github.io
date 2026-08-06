@@ -35,6 +35,9 @@ Website/
 ├── .gitignore              keeps editor temp files (*.tmp.*) out of the repo
 ├── README.md               this file
 ├── CLAUDE.md               working conventions and guardrails for the repo
+├── .github/workflows/pages.yml
+│                           publishes the site to GitHub Pages on every push
+│                           to main (no build step; it uploads the files as-is)
 └── assets/
     ├── css/styles.css      the main design system
     ├── css/factsheet.css   styles for the two factsheets
@@ -154,8 +157,17 @@ it was done and how to re-do it if ever needed.
    holds a repository named exactly `econpipeline.github.io`. The contents of
    this `Website/` folder live at the repo root (so `index.html` sits at the
    top level, not inside a subfolder).
-2. **Pages.** *Settings → Pages → Build and deployment → Source: Deploy from a
-   branch → `main` / root*. GitHub serves the site within a minute of each push.
+2. **Pages.** *Settings → Pages → Build and deployment → Source: GitHub
+   Actions*, which runs `.github/workflows/pages.yml` on every push to `main`
+   and serves the site within a minute or two. There is still no build step:
+   the workflow just uploads the files as they are.
+
+   This replaced the older *Deploy from a branch* setting on 6 August 2026,
+   after that builder jammed: one build failed with no diagnostic and the
+   retry sat unfinished for over half an hour, against a normal build time of
+   about 25 seconds. Nothing was wrong with the repository. If the Actions
+   route ever needs to be reverted, the branch setting still works in
+   principle and `.nojekyll` is retained for it.
 3. **Custom domain.** The included `CNAME` file requests `econpipeline.org`.
    With the DNS below in place, `econpipeline.org` is entered under
    *Settings → Pages → Custom domain*.
