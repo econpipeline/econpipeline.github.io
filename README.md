@@ -26,6 +26,10 @@ Website/
 ├── donor-factsheet.pdf     PDF of the factsheet, linked from the Donors section
 │                           (regenerate whenever donor-factsheet.html changes)
 ├── mentor-factsheet.html   one-page mentor factsheet
+├── psg-phd-workshop-cfp.pdf
+│                           call for papers for the PSG Economics PhD Workshop,
+│                           linked from the Events section (built from
+│                           PSGPhD/PSGPhD_CfP.tex with lualatex)
 ├── CNAME                   custom domain (econpipeline.org)
 ├── .nojekyll               tells GitHub Pages to serve files as-is
 ├── .gitignore              keeps editor temp files (*.tmp.*) out of the repo
