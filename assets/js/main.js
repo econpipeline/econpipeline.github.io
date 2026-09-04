@@ -211,15 +211,15 @@
     });
   }
 
-  /* ---------- Apply button: opens 15 June 2026 ---------- */
+  /* ---------- Apply button: 2027 cohort closed; next intake opens July 2027 ----------
+     The static HTML already shows the closed state; this keeps it in sync and
+     strips any live href if the markup is ever restored. Update this block (and
+     the CTA copy in index.html) when applications reopen in July 2027. */
   var applyBtn = document.getElementById("applyBtn");
   if (applyBtn && !showAll) {
-    var opensAt = new Date(2026, 5, 15); // 15 June 2026 (month is 0-indexed)
-    if (new Date() < opensAt) {
-      applyBtn.classList.add("btn--disabled");
-      applyBtn.setAttribute("aria-disabled", "true");
-      applyBtn.removeAttribute("href");
-      applyBtn.textContent = "Applications open 15 June 2026";
-    }
+    applyBtn.classList.add("btn--disabled");
+    applyBtn.setAttribute("aria-disabled", "true");
+    applyBtn.removeAttribute("href");
+    applyBtn.textContent = "Applications closed";
   }
 })();
