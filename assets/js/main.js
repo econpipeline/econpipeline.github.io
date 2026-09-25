@@ -77,6 +77,18 @@
   });
   if (rmButtons.length) selectMilestone(0);
 
+  /* ---------- Cohort portraits: tap to reveal (hover/focus handled in CSS) ---------- */
+  var cohortCards = Array.prototype.slice.call(document.querySelectorAll(".cohort__card"));
+  cohortCards.forEach(function (card) {
+    card.addEventListener("click", function () {
+      var open = !card.classList.contains("is-open");
+      cohortCards.forEach(function (c) {
+        c.classList.toggle("is-open", c === card && open);
+        c.setAttribute("aria-expanded", String(c === card && open));
+      });
+    });
+  });
+
   /* ---------- Fund a bursary modal ---------- */
   var giveModal = document.getElementById("giveModal");
   if (giveModal && typeof giveModal.showModal === "function") {
