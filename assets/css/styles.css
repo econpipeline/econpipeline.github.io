@@ -286,6 +286,12 @@ section{ position:relative; }
   background:linear-gradient(180deg, rgba(220,192,138,.5) 0%, rgba(97,34,59,.45) 55%, rgba(72,24,41,.78) 100%);
   mix-blend-mode:multiply; transition:opacity .8s var(--ease);
 }
+/* Programme track (Honours / Master's / Predoc), pinned to the portrait */
+.cohort__role{
+  position:absolute; z-index:2; top:.9rem; left:.9rem;
+  padding:.3rem .7rem; border-radius:100px; background:rgba(22,10,16,.72);
+  font-size:.62rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-soft);
+}
 /* Gold index with a short rule that extends when the card opens */
 .cohort__no{
   display:flex; align-items:center; gap:.7rem; margin-top:1.25rem;
@@ -303,7 +309,6 @@ section{ position:relative; }
 
 .cohort__name{ margin-top:.45rem; font-weight:600; font-size:1.12rem; color:var(--maroon); line-height:1.2; letter-spacing:-.005em; }
 .cohort__from{ margin-top:.35rem; font-size:.7rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--grey); }
-.cohort__field{ margin-top:.3rem; font-size:.9rem; font-weight:300; color:var(--grey); line-height:1.45; }
 .cohort__hint-narrow{ display:none; }
 .cohort__hint{ margin-top:clamp(2rem,4vw,2.8rem); font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; color:var(--grey-soft); }
 
