@@ -118,14 +118,14 @@
 </section>
 
 <!-- ============================== COHORT ============================== -->
-<!-- Portraits are pre-cropped to 4:5 with eyes on a common line (assets/img/cohort/).
+<!-- Portraits are pre-cropped to 4:5 with eyes on a common line (assets/img/cohort/), ordered by surname.
      Hover/focus reveals the fact; on touch, main.js toggles .is-open on tap. -->
 <section class="cohort section--light" id="cohort" aria-labelledby="cohortTitle">
   <div class="wrap">
     <header class="section-head reveal">
       <p class="label">The 2027 cohort</p>
-      <h2 id="cohortTitle" class="display display--dark">Meet our first six.</h2>
-      <p class="lede">We are delighted to announce the first students selected for the South African Economics Pipeline. They begin at Stellenbosch in January 2027 &ndash; three in honours, two in the master&rsquo;s programme and one as a predoctoral researcher &ndash; each paired with a Stellenbosch mentor and an international scholar.</p>
+      <h2 id="cohortTitle" class="display display--dark">Meet our first eight.</h2>
+      <p class="lede">We are proud to announce the first students selected for the South African Economics Pipeline. Drawn from several institutions across South Africa, they bring academic backgrounds in economics and applied mathematics. They begin at Stellenbosch in January 2027 &ndash; four in honours, three in the master&rsquo;s programme and one as a predoctoral researcher &ndash; each paired with a Stellenbosch mentor and an international scholar.</p>
     </header>
 
     <ul class="cohort__grid">
@@ -156,13 +156,37 @@
       <li class="reveal">
         <button type="button" class="cohort__card" aria-expanded="false">
           <span class="cohort__frame">
+            <img src="assets/img/cohort/vanherzeele.jpg" alt="Ross van Herzeele" width="720" height="900" loading="lazy" decoding="async">
+            <span class="cohort__role">Master&rsquo;s</span>
+            <span class="cohort__fact">Came to economics from a law degree. Favourite economists: Milton Friedman and John Cochrane. Plays guitar and sings.</span>
+          </span>
+          <span class="cohort__no" aria-hidden="true">03</span>
+          <span class="cohort__name">Ross van Herzeele</span>
+          <span class="cohort__from">Hillcrest, KwaZulu-Natal</span>
+        </button>
+      </li>
+      <li class="reveal">
+        <button type="button" class="cohort__card" aria-expanded="false">
+          <span class="cohort__frame">
             <img src="assets/img/cohort/karengera.jpg" alt="Kevin Karengera" width="720" height="900" loading="lazy" decoding="async">
             <span class="cohort__role">Honours</span>
             <span class="cohort__fact">Plays chess blindfolded. Keynes is the favourite.</span>
           </span>
-          <span class="cohort__no" aria-hidden="true">03</span>
+          <span class="cohort__no" aria-hidden="true">04</span>
           <span class="cohort__name">Kevin Karengera</span>
           <span class="cohort__from">Cape Town</span>
+        </button>
+      </li>
+      <li class="reveal">
+        <button type="button" class="cohort__card" aria-expanded="false">
+          <span class="cohort__frame">
+            <img src="assets/img/cohort/mhlongo.jpg" alt="Lukhanyiso Mhlongo" width="720" height="900" loading="lazy" decoding="async">
+            <span class="cohort__role">Honours</span>
+            <span class="cohort__fact">Studies economic science and computer science at Wits, and codes in Python, Java and C++. Grows fruit and vegetables, and makes pasta, cream cheese and ice cream from scratch.</span>
+          </span>
+          <span class="cohort__no" aria-hidden="true">05</span>
+          <span class="cohort__name">Lukhanyiso Mhlongo</span>
+          <span class="cohort__from">Vereeniging</span>
         </button>
       </li>
       <li class="reveal">
@@ -172,7 +196,7 @@
             <span class="cohort__role">Master&rsquo;s</span>
             <span class="cohort__fact">Favourite economist, for now: Lant Pritchett.</span>
           </span>
-          <span class="cohort__no" aria-hidden="true">04</span>
+          <span class="cohort__no" aria-hidden="true">06</span>
           <span class="cohort__name">Anya Nash</span>
           <span class="cohort__from">KuGompo City (East London)</span>
         </button>
@@ -184,7 +208,7 @@
             <span class="cohort__role">Honours</span>
             <span class="cohort__fact">A French teacher introduced her to Esther Duflo in high school, long before she knew she wanted to be an economist. She also knits her own sweaters.</span>
           </span>
-          <span class="cohort__no" aria-hidden="true">05</span>
+          <span class="cohort__no" aria-hidden="true">07</span>
           <span class="cohort__name">Estelle Prat</span>
           <span class="cohort__from">Pretoria</span>
         </button>
@@ -194,15 +218,15 @@
           <span class="cohort__frame">
             <img src="assets/img/cohort/zwane.jpg" alt="Zenamile Zwane" width="720" height="900" loading="lazy" decoding="async">
             <span class="cohort__role">Master&rsquo;s</span>
-            <span class="cohort__fact">The morning cycle playlist could be Tame Impala, Ntencane or the Steven Universe soundtrack.</span>
+            <span class="cohort__fact">Built a USD/ZAR exchange-rate forecast in R that beat the AR(1) benchmark out of sample. Her morning cycle playlist runs from Tame Impala to Ntencane.</span>
           </span>
-          <span class="cohort__no" aria-hidden="true">06</span>
+          <span class="cohort__no" aria-hidden="true">08</span>
           <span class="cohort__name">Zenamile Zwane</span>
           <span class="cohort__from">Newcastle, KwaZulu-Natal</span>
         </button>
       </li>
     </ul>
-    <p class="cohort__hint" aria-hidden="true"><span class="cohort__hint-wide">Hover or tap a portrait</span><span class="cohort__hint-narrow">Swipe for all six &middot; tap a portrait</span></p>
+    <p class="cohort__hint" aria-hidden="true"><span class="cohort__hint-wide">Hover or tap a portrait</span><span class="cohort__hint-narrow">Swipe for all eight &middot; tap a portrait</span></p>
   </div>
 </section>
 
@@ -456,7 +480,7 @@
       </div>
       <div class="roadmap__detail" id="roadmapDetail" role="status" aria-live="polite">
         <p data-d="0"><strong>2026.</strong> Recruitment opens on 15 June; the first offers go out in October; and the first PSG Economics PhD Workshop is held at STIAS in November.</p>
-        <p data-d="1"><strong>January 2027.</strong> The first cohort of six begins at Stellenbosch, in honours, the master&rsquo;s programme or a predoctoral post, each paired with a Stellenbosch mentor and an international scholar.</p>
+        <p data-d="1"><strong>January 2027.</strong> The first cohort of eight begins at Stellenbosch, in honours, the master&rsquo;s programme or a predoctoral post, each paired with a Stellenbosch mentor and an international scholar.</p>
         <p data-d="2"><strong>November 2027.</strong> The first Stellenbosch Economics Summer School is held, giving the cohort advanced training and direct contact with visiting scholars.</p>
         <p data-d="3"><strong>2028.</strong> The strongest students progress to the 18-month master&rsquo;s package: advanced coursework, then structured research or an international exchange.</p>
         <p data-d="4"><strong>December 2028.</strong> Bursars apply to PhD programmes abroad, supported by reference letters from scholars who have seen their work.</p>
@@ -622,7 +646,9 @@
       <div class="current-donors__names">
         <span>Millennium Trust</span>
         <span class="dot" aria-hidden="true">&middot;</span>
-        <span>PSG</span>
+        <a href="https://www.psg.co.za/" target="_blank" rel="noopener">PSG</a>
+        <span class="dot" aria-hidden="true">&middot;</span>
+        <a href="https://www.genesis-analytics.com/" target="_blank" rel="noopener">Genesis Analytics</a>
       </div>
     </div>
   </div>
